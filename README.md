@@ -39,6 +39,24 @@ Build the desktop app:
 bun run tauri:build
 ```
 
+## Auto updates
+
+The desktop app checks GitHub Releases for updates and shows an **Install update** button in the sidebar when a newer signed build is available.
+
+### One-time signing setup
+
+Generate a signing key pair (keep the private key secret):
+
+```bash
+bun run tauri signer generate -w ~/.tauri/loot-mob-creator.key --ci
+```
+
+1. Copy the contents of `~/.tauri/loot-mob-creator.key.pub` into `src-tauri/tauri.conf.json` under `plugins.updater.pubkey`.
+2. Add the private key to the GitHub repository secret `TAURI_SIGNING_PRIVATE_KEY` (file contents or path).
+3. If the key has a password, also set `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`.
+
+Tagged releases built by `.github/workflows/release.yml` upload `latest.json` and signed updater artifacts automatically when the secret is configured.
+
 ## Usage
 
 1. Open the app

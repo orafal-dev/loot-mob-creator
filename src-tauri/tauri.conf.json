@@ -28,6 +28,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "createUpdaterArtifacts": true,
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -35,5 +36,16 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDlGMUY3OTY1QkNCMTA2NDAKUldSQUJyRzhaWGtmbnhEejMzV0Z1WWUrOFFlMktJcW1VY1phY2pIampvSjllWUFMLzNTU2N4ck0K",
+      "endpoints": [
+        "https://github.com/orafal-dev/loot-mob-creator/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
   }
 }

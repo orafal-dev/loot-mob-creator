@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Minus, Square, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { AppFooter } from "@/components/app-footer";
+import { AppUpdateButton } from "@/components/app-update-button";
 import {
   BackgroundGradientLayer,
   type BackgroundGradientVariant,
@@ -97,45 +98,47 @@ export const AppShell = ({ children }: AppShellProps) => {
       <AppFooter />
 
       <div className="relative z-10 flex h-full min-h-0 w-full">
+        <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 lg:flex lg:w-72 lg:flex-col lg:overflow-hidden lg:border-r lg:border-white/10 lg:bg-black/20 lg:px-6 lg:pt-4 lg:backdrop-blur xl:w-80">
+          <div className="shrink-0" data-tauri-drag-region>
+            <Link
+              href="/"
+              aria-label="Home"
+              className="h-6 text-xl font-black text-white"
+              data-tauri-drag-region={false}
+            >
+              Loot Mob Creator
+            </Link>
+          </div>
+
+          <nav className="mt-10 min-h-0 flex-1 overflow-y-auto">
+            <ul className="mt-3 space-y-1 border-l border-transparent">
+              {navigation.map((item) => {
+                const isActive = pathname === item.href;
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "flex justify-between gap-2 py-1 -ml-4 pl-4 pr-3 text-sm transition",
+                        isActive ? "text-white" : "text-white/50 hover:text-white/80",
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <span className="truncate">{item.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div className="shrink-0 pt-4 pb-6">
+            <AppUpdateButton />
+          </div>
+        </aside>
+
         <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden lg:ml-72 xl:ml-80">
-          <header className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex">
-            <div className="contents lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-white/10 lg:bg-black/20 lg:px-6 lg:pb-8 lg:pt-4 lg:backdrop-blur xl:w-80">
-              <div className="hidden lg:flex" data-tauri-drag-region>
-                <Link
-                  href="/"
-                  aria-label="Home"
-                  className="h-6 text-xl font-black text-white"
-                  data-tauri-drag-region={false}
-                >
-                  Loot Mob Creator
-                </Link>
-              </div>
-
-              <nav className="hidden lg:mt-10 lg:block">
-                <ul className="mt-3 space-y-1 border-l border-transparent">
-                  {navigation.map((item) => {
-                    const isActive = pathname === item.href;
-
-                    return (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className={cn(
-                            "flex justify-between gap-2 py-1 -ml-4 pl-4 pr-3 text-sm transition",
-                            isActive ? "text-white" : "text-white/50 hover:text-white/80",
-                          )}
-                          aria-current={isActive ? "page" : undefined}
-                        >
-                          <span className="truncate">{item.label}</span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
-            </div>
-          </header>
-
           {children}
         </div>
       </div>
