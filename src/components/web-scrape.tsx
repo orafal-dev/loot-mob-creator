@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle2, ClipboardCopy } from "lucide-react";
-import { useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { HighlightedCode } from "@/components/highlighted-code";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,12 +12,14 @@ import { fetchLootHtml } from "@/lib/wiki-api";
 import type { Item } from "@/lib/types";
 
 export const WebScrape = () => {
-  const [mobName, setMobName] = useState("Orc");
+  const [mobName, setMobName] = useState("");
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [mappedItems, setMappedItems] = useState<Item[]>([]);
+
+  const hasMobName = mobName.trim().length > 0;
 
   useEffect(() => {
     const loadItems = async () => {
@@ -29,6 +31,12 @@ export const WebScrape = () => {
   }, []);
 
   const handleScrape = async () => {
+    if (!hasMobName) {
+      setError("Monster name is required");
+      setResult("");
+      return;
+    }
+
     setIsLoading(true);
     setError("");
     setCopied(false);
@@ -59,22 +67,36 @@ export const WebScrape = () => {
     window.setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    void handleScrape();
+  };
+
   return (
     <div className="not-prose space-y-4">
-      <div className="space-y-2">
-        <Label htmlFor="mob_name">Monster name</Label>
-        <Input
-          id="mob_name"
-          name="mob_name"
-          value={mobName}
-          onChange={(event) => setMobName(event.target.value)}
-          placeholder="Mob name from Tibia Wiki"
-        />
-      </div>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <Label htmlFor="mob_name">Monster name</Label>
+          <Input
+            id="mob_name"
+            name="mob_name"
+            value={mobName}
+            onChange={(event) => {
+              setMobName(event.target.value);
+              if (error) {
+                setError("");
+              }
+            }}
+            placeholder="Mob name from Tibia Wiki"
+            required
+            aria-invalid={!hasMobName && Boolean(error)}
+          />
+        </div>
 
-      <Button onClick={handleScrape} disabled={isLoading}>
-        {isLoading ? "Generating..." : "Generate loot"}
-      </Button>
+        <Button type="submit" disabled={!hasMobName || isLoading}>
+          {isLoading ? "Generating..." : "Generate loot"}
+        </Button>
+      </form>
 
       {error ? (
         <p className="text-sm text-destructive">{error}</p>
