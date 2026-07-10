@@ -4,7 +4,7 @@ version = "1.0.10"
 description = "Loot creator for OTS based on Canary"
 authors = ["Rafał Olszewski <olszak94@gmail.com>"]
 license = "MIT"
-repository = "https://github.com/rafalolszewski94/loot-mob-creator"
+repository = "https://github.com/orafal-dev/loot-mob-creator"
 edition = "2021"
 rust-version = "1.77.2"
 

@@ -1,4 +1,4 @@
-[![Release app](https://github.com/rafalolszewski94/loot-mob-creator/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/rafalolszewski94/loot-mob-creator/actions/workflows/build.yml)
+[![Release app](https://github.com/orafal-dev/loot-mob-creator/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/orafal-dev/loot-mob-creator/actions/workflows/build.yml)
 
 # Loot Mob Creator for Canary based OTS
 

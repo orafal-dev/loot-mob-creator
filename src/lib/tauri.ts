@@ -8,7 +8,7 @@ export type FetchOptions = {
 };
 
 const DEFAULT_USER_AGENT =
-  "LootMobCreator/1.0 (+https://github.com/rafalolszewski94/loot-mob-creator)";
+  "LootMobCreator/1.0 (+https://github.com/orafal-dev/loot-mob-creator)";
 
 export const minimizeApp = async (): Promise<void> => {
   if (!isTauri()) {

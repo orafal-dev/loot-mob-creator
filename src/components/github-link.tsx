@@ -7,7 +7,7 @@ export const GitHubLink = () => (
     type="button"
     className="group"
     onClick={() =>
-      void openExternal("https://github.com/rafalolszewski94/loot-mob-creator")
+      void openExternal("https://github.com/orafal-dev/loot-mob-creator")
     }
     aria-label="Follow us on GitHub"
   >

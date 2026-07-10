@@ -5,13 +5,13 @@
   "description": "Loot creator for OTS based on Canary",
   "author": {
     "name": "Rafał Olszewski",
-    "email": "olszak94@gmail.com"
+    "email": "me@orafal.dev"
   },
   "license": "MIT",
   "packageManager": "bun@1.3.10",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rafalolszewski94/loot-mob-creator.git"
+    "url": "https://github.com/orafal-dev/loot-mob-creator.git"
   },
   "scripts": {
     "dev": "next dev",
