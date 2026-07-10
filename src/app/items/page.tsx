@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/table";
 import { getStoredItems, setStoredItems } from "@/lib/store";
 import type { CatalogItem, Item } from "@/lib/types";
+import Image from "next/image";
 
 const emptyItem = (): Item => ({
   name: "",
@@ -83,8 +84,9 @@ export default function ItemsPage() {
   };
 
   return (
-    <BackgroundGradient variant="green" className="text-white">
+    <BackgroundGradient className="text-white">
       <h1>Item mapping</h1>
+      <p className="text-sm text-muted-foreground">This is a tool to help you map items to their IDs. It helps when there are multiple items with the same name. And so you can use the ID to identify the item properly.</p>
 
       <div className="not-prose mt-6 space-y-6">
         <SearchItem onSelectItem={handleItemSelected} />
@@ -156,11 +158,13 @@ export default function ItemsPage() {
               <TableRow key={`${item.id}-${item.name}`}>
                 <TableCell>
                   <div className="inline-flex items-center gap-x-2">
-                    <div className="relative size-10 overflow-hidden">
-                      <img
+                    <div className="relative size-8 overflow-hidden">
+                      <Image
+                        width={32}
+                        height={32}
                         src={`https://item-images.ots.me/latest_otbr/${item.id}.png`}
-                        alt=""
-                        className="absolute -top-6 left-1"
+                        alt={item.name}
+                        className="size-full object-cover"
                       />
                     </div>
                     <span>{item.name}</span>

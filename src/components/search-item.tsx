@@ -10,6 +10,7 @@ import {
 } from "@/lib/items-data";
 import type { CatalogItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type SearchItemProps = {
   onSelectItem: (item: CatalogItem) => void;
@@ -64,11 +65,13 @@ export const SearchItem = ({ onSelectItem }: SearchItemProps) => {
                 "flex w-full items-center gap-3 rounded-md border border-zinc-700 px-2 py-2 text-left transition hover:bg-white/5",
               )}
             >
-              <div className="relative size-10 overflow-hidden">
-                <img
+              <div className="relative size-8 overflow-hidden">
+                <Image
+                  width={32}
+                  height={32}
                   src={`https://item-images.ots.me/latest_otbr/${item.id}.png`}
-                  alt=""
-                  className="absolute -top-6 left-1"
+                  alt={item.name}
+                  className="size-full object-cover"
                 />
               </div>
               <span className="text-sm text-white">{item.name}</span>

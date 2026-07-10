@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   output: "export",
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "item-images.ots.me",
+      },
+    ],
   },
   assetPrefix: isProd ? undefined : `http://${internalHost}:3000`,
   trailingSlash: true,
