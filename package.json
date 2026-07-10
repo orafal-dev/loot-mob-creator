@@ -1,6 +1,6 @@
 {
   "name": "loot-mob-creator",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": true,
   "description": "Loot creator for OTS based on Canary",
   "author": {
@@ -18,6 +18,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "bump": "node scripts/bump-version.mjs",
+    "bump:patch": "node scripts/bump-version.mjs patch",
+    "bump:minor": "node scripts/bump-version.mjs minor",
+    "bump:major": "node scripts/bump-version.mjs major",
     "tauri": "tauri",
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build"
