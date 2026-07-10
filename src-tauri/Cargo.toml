@@ -1,0 +1,26 @@
+[package]
+name = "loot-mob-creator"
+version = "1.0.10"
+description = "Loot creator for OTS based on Canary"
+authors = ["Rafał Olszewski <olszak94@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/rafalolszewski94/loot-mob-creator"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.11.3", features = [] }
+tauri-plugin-log = "2"
+tauri-plugin-http = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-store = "2"
