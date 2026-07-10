@@ -1,6 +1,6 @@
 {
   "name": "loot-mob-creator",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "description": "Loot creator for OTS based on Canary",
   "author": {
