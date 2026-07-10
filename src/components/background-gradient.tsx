@@ -46,7 +46,7 @@ export const BackgroundGradient = ({
     <div className={cn("relative isolate flex h-full min-h-0 flex-col", className)}>
       <div
         className={cn(
-          "flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pt-14 sm:px-6 lg:px-8",
+          "flex min-h-0 flex-1 flex-col overflow-y-auto px-8 pt-14 sm:px-10 lg:px-12",
           APP_FOOTER_PADDING_CLASS,
         )}
       >
