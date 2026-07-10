@@ -1,6 +1,6 @@
 [package]
 name = "loot-mob-creator"
-version = "1.0.13"
+version = "1.0.14"
 description = "Loot creator for OTS based on Canary"
 authors = ["Rafał Olszewski <olszak94@gmail.com>"]
 license = "MIT"
